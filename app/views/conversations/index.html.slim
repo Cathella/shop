@@ -1,0 +1,6 @@
+- @conversations.each do |room|
+  = link_to "Conversation with: #{room.recipient.email}", conversation_path(room)
+  = button_to 'Remove Conversation', conversation_path(room),
+    method: :delete, class: 'btn btn-danger'
+  hr
+  

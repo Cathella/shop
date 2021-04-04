@@ -1,4 +1,8 @@
 class ConversationsController < ApplicationController
+  def index
+    @conversations = current_account.my_conversations_includes(:sender)
+  end
+
   def create
     @conversation = current_account.hato_conversations.build(conversation_params)
     if @conversation.save
