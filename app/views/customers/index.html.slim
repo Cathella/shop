@@ -1,0 +1,7 @@
+- @customers.each do |customer|
+  = link_to customer.email, customer if current_account != customer
+  - if can_create_conversation?(current_account, customer)
+    = form_for @conversation, url: :conversations do |form|
+      = fill_conversation_form(form, customer)
+      = form.submit 'Start Conversation', class: 'btn btn-primary'
+  hr
