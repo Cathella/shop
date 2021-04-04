@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :customers
   devise_for :resellers
 
-  resources :resellers, :customers, :conversations
+  resources :resellers, :customers, :conversations, :messages
 end
