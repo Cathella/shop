@@ -1,0 +1,6 @@
+= render 'layouts/links'
+ul.nav.navbar-nav.navbar-right
+  li = link_to 'Edit Profile',
+    devise_url_helper(:edit, current_account, :registration)
+  li = link_to 'Log out',
+    devise_url_helper(:destroy, current_account, :session), method: :delete

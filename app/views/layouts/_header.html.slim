@@ -1,0 +1,12 @@
+nav.navbar.nav-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-controls="navbar" aria-expanded="false" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to 'Shop', :root, class: 'navbar-brand'
+    #navbar.navbar-collapse.collapse
+      - if current_account_signed_in?
+        = render 'layouts/account_header'
