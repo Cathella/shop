@@ -14,6 +14,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:deshobato_message).permit(:body, :author_id, :author_type)
+    params.require(:denshobato_message).permit(:body, :author_id, :author_type)
   end
 end

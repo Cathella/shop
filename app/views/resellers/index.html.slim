@@ -1,7 +1,15 @@
 - @resellers.each do |reseller|
   = link_to reseller.email, reseller if current_account != reseller
-  - if can_create_conversation?(current_account, reseller)
-    = form_for @conversation, url: :conversations do |form|
-      = fill_conversation_form(form, reseller)
-      = form.submit 'Start Conversation', class: 'btn btn-primary'
+  - unless conversation_exists?(current_account, reseller)
+    - if can_create_conversation?(current_account, reseller)
+      - if user_in_black_list?(current_account, reseller)
+        p 'This user is in your blacklist'
+        = button_to 'Remove from blacklist',
+          remove_from_blacklist_path(user: reseller, klass: reseller.class.name), class: 'btn btn-info'
+      - else
+        = button_to 'Add to blacklist',
+          black_list_path(user: reseller, klass: reseller.class.name), class: 'btn btn-danger'
+        = form_for @conversation, url: :conversations do |form|
+          = fill_conversation_form(form, reseller)
+          = form.submit 'Start Conversation', class: 'btn btn-primary'
   hr
